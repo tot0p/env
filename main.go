@@ -4,11 +4,12 @@ import (
 	"errors"
 	"fmt"
 	"os"
+	"strconv"
 	"strings"
 )
 
-// LoadEnvMap Function to load the environment into a map
-func LoadEnvMap(path string) (map[string]string, error) {
+// LoadMapPath Function to load the environment into a map
+func LoadMapPath(path string) (map[string]string, error) {
 	data, err := os.ReadFile(path)
 	if err != nil {
 		fmt.Println(err)
@@ -30,8 +31,18 @@ func LoadEnvMap(path string) (map[string]string, error) {
 	return result, nil
 }
 
-// LoadEnv Function to load the environment in os Env
-func LoadEnv(path string) error {
+// LoadMap Function to load the environment into a map
+func LoadMap() (map[string]string, error) {
+	return LoadMapPath(".env")
+}
+
+// Load Function to load the environment in os Env
+func Load() error {
+	return LoadPath(".env")
+}
+
+// LoadPath Function to load the environment in os Env
+func LoadPath(path string) error {
 	data, err := os.ReadFile(path)
 	if err != nil {
 		fmt.Println(err)
@@ -54,4 +65,24 @@ func LoadEnv(path string) error {
 		os.Setenv(key, value)
 	}
 	return nil
+}
+
+// Get Function to get the environment
+func Get(key string) string {
+	return os.Getenv(key)
+}
+
+// GetInt Function to get the environment as int
+func GetInt(key string) (int, error) {
+	return strconv.Atoi(os.Getenv(key))
+}
+
+// GetBool Function to get the environment as bool
+func GetBool(key string) (bool, error) {
+	return strconv.ParseBool(os.Getenv(key))
+}
+
+// GetFloat Function to get the environment as float
+func GetFloat(key string) (float64, error) {
+	return strconv.ParseFloat(os.Getenv(key), 64)
 }
