@@ -8,6 +8,11 @@ import (
 	"strings"
 )
 
+// LoadMap Function to load the environment into a map
+func LoadMap() (map[string]string, error) {
+	return LoadMapPath(".env")
+}
+
 // LoadMapPath Function to load the environment into a map
 func LoadMapPath(path string) (map[string]string, error) {
 	data, err := os.ReadFile(path)
@@ -29,11 +34,6 @@ func LoadMapPath(path string) (map[string]string, error) {
 		}
 	}
 	return result, nil
-}
-
-// LoadMap Function to load the environment into a map
-func LoadMap() (map[string]string, error) {
-	return LoadMapPath(".env")
 }
 
 // Load Function to load the environment in os Env
