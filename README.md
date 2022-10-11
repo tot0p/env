@@ -1,3 +1,4 @@
+[![Go Report Card](https://goreportcard.com/badge/github.com/tot0p/env)](https://goreportcard.com/report/github.com/tot0p/env)
 # env
 
 Is my Lib to load .env
