@@ -77,12 +77,39 @@ func GetInt(key string) (int, error) {
 	return strconv.Atoi(os.Getenv(key))
 }
 
+// GetIntWithDefault Function to get the environment as int with default value
+func GetIntWithDefault(key string, def int) int {
+	value, err := strconv.Atoi(os.Getenv(key))
+	if err != nil {
+		return def
+	}
+	return value
+}
+
 // GetBool Function to get the environment as bool
 func GetBool(key string) (bool, error) {
 	return strconv.ParseBool(os.Getenv(key))
 }
 
+// GetBoolWithDefault Function to get the environment as bool with default value
+func GetBoolWithDefault(key string, def bool) bool {
+	value, err := strconv.ParseBool(os.Getenv(key))
+	if err != nil {
+		return def
+	}
+	return value
+}
+
 // GetFloat Function to get the environment as float
 func GetFloat(key string) (float64, error) {
 	return strconv.ParseFloat(os.Getenv(key), 64)
+}
+
+// GetFloatWithDefault Function to get the environment as float with default value
+func GetFloatWithDefault(key string, def float64) float64 {
+	value, err := strconv.ParseFloat(os.Getenv(key), 64)
+	if err != nil {
+		return def
+	}
+	return value
 }

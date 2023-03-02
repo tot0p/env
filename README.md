@@ -59,10 +59,13 @@ func main() {
 
 Works only if you use `Load` or `LoadPath` for load .env file
 
-| Function  | Description             | With Error |
-|-----------|-------------------------| ---------- |
-| `Get`     | get value from key      | No         |
-| `GetInt`  | get int value from key  | Yes        |
-| `GetBool` | get Bool value from key | Yes        |
-| `GetFloat`| get Float value from key| Yes        |
+| Function              | Description                                 | With Error |
+|-----------------------|---------------------------------------------|------------|
+| `Get`                 | get value from key                          | No         |
+| `GetInt`              | get int value from key                      | Yes        |
+| `GetIntWithDefault`   | get int value from key with default value   | No         |
+| `GetBool`             | get Bool value from key                     | Yes        |
+| `GetBoolWithDefault`  | get Bool value from key with default value  | No         |
+| `GetFloat`            | get Float value from key                    | Yes        |
+| `GetFloatWithDefault` | get Float value from key with default value | No         |
 
