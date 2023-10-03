@@ -49,7 +49,7 @@ func LoadPath(path string) error {
 	}
 	datas := string(data)
 	sep := "\n"
-	strings.ReplaceAll(datas, "\r", "")
+	datas = strings.ReplaceAll(datas, "\r", "")
 	var result = map[string]string{}
 	for _, elem := range strings.Split(datas, sep) {
 		if strings.Contains(elem, "=") {
