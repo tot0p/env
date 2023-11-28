@@ -2,7 +2,6 @@ package env
 
 import (
 	"errors"
-	"fmt"
 	"os"
 	"strconv"
 	"strings"
@@ -17,7 +16,7 @@ func LoadMap() (map[string]string, error) {
 func LoadMapPath(path string) (map[string]string, error) {
 	data, err := os.ReadFile(path)
 	if err != nil {
-		fmt.Println(err)
+		return nil, err
 	}
 	datas := string(data)
 	sep := "\n"
@@ -45,7 +44,7 @@ func Load() error {
 func LoadPath(path string) error {
 	data, err := os.ReadFile(path)
 	if err != nil {
-		fmt.Println(err)
+		return err
 	}
 	datas := string(data)
 	sep := "\n"
@@ -62,7 +61,10 @@ func LoadPath(path string) error {
 		}
 	}
 	for key, value := range result {
-		os.Setenv(key, value)
+		err := os.Setenv(key, value)
+		if err != nil {
+			return err
+		}
 	}
 	return nil
 }
